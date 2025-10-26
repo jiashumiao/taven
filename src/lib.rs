@@ -1,10 +1,8 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+pub use taven_internal::*;
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use taven_internal::prelude::add;
 
     #[test]
     fn it_works() {

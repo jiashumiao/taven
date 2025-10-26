@@ -5,3 +5,17 @@ version = 4
 [[package]]
 name = "taven"
 version = "0.1.0"
+dependencies = [
+ "taven_internal",
+]
+
+[[package]]
+name = "taven_core"
+version = "0.1.0"
+
+[[package]]
+name = "taven_internal"
+version = "0.1.0"
+dependencies = [
+ "taven_core",
+]
