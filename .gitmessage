@@ -1,0 +1,46 @@
+# 🧭 Commit message template for Rust projects
+# 使用说明：
+# <type>(<scope>): <subject>
+# 空一行写详细说明，可多行。
+# type 从下面选择，scope 可按模块填写（如 core, cli, ecs, flow, plugin 等）。
+
+# === 允许的类型 (type) ===
+# feat      : 新功能 (feature)
+# fix       : 修复 bug
+# docs      : 文档修改
+# style     : 格式调整（不影响代码逻辑）
+# refactor  : 重构（非新功能/修复）
+# perf      : 性能优化
+# test      : 测试相关
+# build     : 构建系统或依赖修改
+# ci        : 持续集成配置
+# chore     : 其他杂项
+# meta      : 元信息（README、LICENSE、配置等）
+
+# === 示例 ===
+# feat(core): add async task pipeline
+# fix(ecs): resolve despawn crash
+# refactor(flow): simplify node evaluation logic
+# perf(runtime): improve reflection cache
+# docs: update contributing guide
+
+# === subject (一行摘要) ===
+# 简短描述本次修改，首字母小写，结尾不要加句号。
+
+<type>(<scope>): <subject>
+
+# === body (详细说明，可选) ===
+# 可写修改动机、原理或影响范围。
+#
+# 示例：
+# - 引入新的 flow graph 模型
+# - 移除旧的 node system
+# - 与 ecs 交互逻辑保持兼容
+#
+# 如果包含破坏性修改，可注明：
+# BREAKING CHANGE: <说明>
+
+# === footer (可选) ===
+# 关联 issue 或 PR：
+# Closes #123
+# Related #456
