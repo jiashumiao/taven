@@ -1,3 +1,7 @@
+# Developing
+
+Not available for using now.
+
 
 # 🧩 Taven
 
@@ -27,104 +31,7 @@ It provides a clean foundation built around a single idea:
 - 💾 **Serializable State** — via `serde` and JSON-based `Blackboard`  
 - 🧪 **Test-Friendly** — small, deterministic, and side-effect controlled  
 
----
 
-### 🧱 Workspace Structure
-
-```
-
-taven/
-├── Cargo.toml              # workspace root
-├── README.md
-├── taven-core/             # core logic (Node, Status, Sequence, etc.)
-│   ├── Cargo.toml
-│   └── src/
-│       ├── lib.rs
-│       ├── node.rs
-│       ├── context.rs
-│       ├── control/
-│       │   └── sequence.rs
-│       └── leaf/
-│           └── action.rs
-├── taven-dsl/              # serde-based flow definitions (WIP)
-│   ├── Cargo.toml
-│   └── src/lib.rs
-└── examples/
-└── simple.rs
-
-````
-
----
-
-### 🚀 Quick Start
-
-Add this to your **workspace root**:
-
-```bash
-cargo run --example simple
-````
-
-or use it as a dependency:
-
-```toml
-[dependencies]
-taven-core = { git = "https://github.com/yourname/taven", package = "taven-core" }
-```
-
----
-
-### 🧩 Example: Simple AI Flow
-
-```rust
-use taven_core::{Action, Sequence, Status};
-
-#[derive(Debug, Default)]
-struct AiCtx {
-    hp: i32,
-    enemy_in_range: bool,
-}
-
-fn main() {
-    let mut ctx = AiCtx { hp: 30, enemy_in_range: true };
-
-    let check_hp = Action::new(|ctx: &mut AiCtx| {
-        if ctx.hp > 50 {
-            println!("HP OK ({})", ctx.hp);
-            Status::Success
-        } else {
-            println!("HP low ({})", ctx.hp);
-            Status::Failure
-        }
-    });
-
-    let attack = Action::new(|ctx: &mut AiCtx| {
-        if ctx.enemy_in_range {
-            println!("Attack!");
-            Status::Success
-        } else {
-            println!("No enemy");
-            Status::Failure
-        }
-    });
-
-    let mut seq = Sequence::new(vec![Box::new(check_hp), Box::new(attack)]);
-
-    match seq.tick(&mut ctx) {
-        Status::Success => println!("Sequence succeeded"),
-        Status::Failure => println!("Sequence failed"),
-        Status::Running => println!("Sequence running"),
-    }
-}
-```
-
-Output:
-
-```
-HP low (30)
-Sequence failed
-```
-
----
 
 ### 🧬 Core Concepts
 
@@ -160,15 +67,6 @@ Taven is built with **engineering clarity** and **compositional elegance** in mi
 > 4. *The flow is data — not code.*
 
 This philosophy makes Taven suitable for AI systems, data pipelines, automation graphs, or any domain requiring controlled, reactive logic execution.
-
----
-
-### 🛠️ Tech Stack
-
-* **Rust 2021+**
-* **Serde / JSON** for state and flow serialization
-* **Workspaces** for modular crate design
-* **Traits + Dynamic Dispatch** for composability
 
 ---
 
