@@ -2,7 +2,7 @@
 name = "taven"
 version = "0.1.1"
 edition = "2024"
-authors = ["Jiashu"]
+authors = ["Jiashu <790548118@qq.com>"]
 description = "Taven is a lightweight, modular engine for building control-flow systems — behavior trees, state machines, reactive logic pipelines, or anything that can be expressed as nodes and flows."
 homepage = "https://github.com/jiashumiao/taven"
 repository = "https://github.com/jiashumiao/taven"

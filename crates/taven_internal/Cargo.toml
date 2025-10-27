@@ -2,6 +2,12 @@
 name = "taven_internal"
 version = "0.1.1"
 edition = "2024"
+authors = ["Jiashu <790548118@qq.com>"]
+description = "The sub package maintained by taven"
+homepage = "https://github.com/jiashumiao/taven"
+repository = "https://github.com/jiashumiao/taven"
+license = "MIT OR Apache-2.0"
+keywords = ["taven", "task", "behavior", "tree", "control", "flow", "taven_internal"]
 
 [dependencies]
 taven_core ={ path = "../taven_core", version = "0.1.1"}
