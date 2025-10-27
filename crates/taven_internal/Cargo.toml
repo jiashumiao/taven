@@ -7,7 +7,7 @@ description = "The sub package maintained by taven"
 homepage = "https://github.com/jiashumiao/taven"
 repository = "https://github.com/jiashumiao/taven"
 license = "MIT OR Apache-2.0"
-keywords = ["taven", "task", "behavior", "tree", "control", "flow", "taven_internal"]
+keywords = ["taven", "taven_internal", "behavior-tree", "state-machine", "control-flow"]
 
 [dependencies]
 taven_core ={ path = "../taven_core", version = "0.1.1"}

@@ -7,7 +7,7 @@ description = "Taven is a lightweight, modular engine for building control-flow 
 homepage = "https://github.com/jiashumiao/taven"
 repository = "https://github.com/jiashumiao/taven"
 license = "MIT OR Apache-2.0"
-keywords = ["taven", "task", "behavior", "tree", "control", "flow"]
+keywords = ["taven", "behavior-tree", "state-machine", "control-flow"]
 
 [dependencies]
 taven_internal = { path = "crates/taven_internal", version = "0.1.1"}

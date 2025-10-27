@@ -7,7 +7,7 @@ description = "The sub package maintained by taven"
 homepage = "https://github.com/jiashumiao/taven"
 repository = "https://github.com/jiashumiao/taven"
 license = "MIT OR Apache-2.0"
-keywords = ["taven", "task", "behavior", "tree", "control", "flow", "taven_core"]
+keywords = ["taven", "taven_core", "behavior-tree", "state-machine", "control-flow"]
 
 [dependencies]
 thiserror = "2.0.17"
