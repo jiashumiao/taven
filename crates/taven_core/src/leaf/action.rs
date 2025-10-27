@@ -5,17 +5,20 @@ pub struct Action<C> {
     inner: Box<dyn FnMut(&mut C) -> Result<TaskStatus, TaskError> + Send>,
 }
 
-impl <C> Action<C> {
+impl<C> Action<C> {
     pub fn new<S, F>(name: S, f: F) -> Self
-    where 
+    where
         S: Into<String>,
         F: FnMut(&mut C) -> Result<TaskStatus, TaskError> + Send + 'static,
     {
-        Self { name: name.into(), inner: Box::new(f) }
+        Self {
+            name: name.into(),
+            inner: Box::new(f),
+        }
     }
 }
 
-impl <C> Task<C> for Action<C> {
+impl<C> Task<C> for Action<C> {
     fn name(&self) -> &str {
         &self.name
     }

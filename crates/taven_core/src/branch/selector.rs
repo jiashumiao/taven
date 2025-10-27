@@ -9,9 +9,13 @@ pub struct Selector<C> {
     idx: usize,
 }
 
-impl <C> Selector<C> {
+impl<C> Selector<C> {
     pub fn new(name: impl Into<String>, children: Vec<BoxTask<C>>) -> Self {
-        Self { name: name.into(), children, idx: 0 }
+        Self {
+            name: name.into(),
+            children,
+            idx: 0,
+        }
     }
 
     pub fn reset(&mut self) {
@@ -19,7 +23,7 @@ impl <C> Selector<C> {
     }
 }
 
-impl <C> Task<C> for Selector<C> {
+impl<C> Task<C> for Selector<C> {
     fn name(&self) -> &str {
         &self.name
     }
@@ -31,12 +35,12 @@ impl <C> Task<C> for Selector<C> {
                 TaskStatus::Failure => {
                     self.idx += 1;
                     continue;
-                },
+                }
                 TaskStatus::Running => return Ok(TaskStatus::Running),
                 TaskStatus::Success => {
                     self.idx = 0;
                     return Ok(TaskStatus::Success);
-                },
+                }
             }
         }
         self.idx = 0;

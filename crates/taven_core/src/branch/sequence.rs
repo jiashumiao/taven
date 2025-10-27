@@ -8,9 +8,13 @@ pub struct Sequence<C> {
     idx: usize,
 }
 
-impl <C> Sequence<C> {
+impl<C> Sequence<C> {
     pub fn new(name: impl Into<String>, children: Vec<BoxTask<C>>) -> Self {
-        Self { name: name.into(), children, idx: 0 }
+        Self {
+            name: name.into(),
+            children,
+            idx: 0,
+        }
     }
 
     pub fn reset(&mut self) {
@@ -18,7 +22,7 @@ impl <C> Sequence<C> {
     }
 }
 
-impl <C> Task<C> for Sequence<C> {
+impl<C> Task<C> for Sequence<C> {
     fn name(&self) -> &str {
         &self.name
     }
@@ -42,4 +46,3 @@ impl <C> Task<C> for Sequence<C> {
         Ok(TaskStatus::Success)
     }
 }
-

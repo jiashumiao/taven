@@ -8,7 +8,7 @@ pub trait AsyncTask<C>: Send {
     fn tick_async<'a>(
         &'a mut self,
         ctx: &'a mut C,
-    ) -> Pin<Box<dyn Future<Output = TaskResult> + Send +'a>>;
+    ) -> Pin<Box<dyn Future<Output = TaskResult> + Send + 'a>>;
 }
 
 pub type BoxAsyncTask<C> = Box<dyn AsyncTask<C>>;
@@ -19,9 +19,4 @@ pub trait IntoAsyncTask<C>: Task<C> + Sized + 'static {
     }
 }
 
-impl <T, C> IntoAsyncTask<C> for T 
-where 
-    T: Task<C> + 'static
-{
-    
-}
+impl<T, C> IntoAsyncTask<C> for T where T: Task<C> + 'static {}
