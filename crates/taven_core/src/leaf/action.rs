@@ -1,15 +1,15 @@
-use crate::task::{Task, TaskError, TaskStatus};
+use crate::task::{Task, TaskResult};
 
 pub struct Action<C> {
     name: String,
-    inner: Box<dyn FnMut(&mut C) -> Result<TaskStatus, TaskError> + Send>,
+    inner: Box<dyn FnMut(&mut C) -> TaskResult + Send>,
 }
 
 impl<C> Action<C> {
     pub fn new<S, F>(name: S, f: F) -> Self
     where
         S: Into<String>,
-        F: FnMut(&mut C) -> Result<TaskStatus, TaskError> + Send + 'static,
+        F: FnMut(&mut C) -> TaskResult + Send + 'static,
     {
         Self {
             name: name.into(),
@@ -23,7 +23,7 @@ impl<C> Task<C> for Action<C> {
         &self.name
     }
 
-    fn tick(&mut self, ctx: &mut C) -> Result<TaskStatus, TaskError> {
+    fn tick(&mut self, ctx: &mut C) -> TaskResult {
         (self.inner)(ctx)
     }
 }

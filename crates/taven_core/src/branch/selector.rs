@@ -1,4 +1,4 @@
-use crate::task::{BoxTask, Task, TaskStatus};
+use crate::task::{BoxTask, Task, TaskResult, TaskStatus};
 
 /// Selector (Fallback): 逐个子节点执行，
 /// 遇到 Success -> Success，遇到 Running -> Running，
@@ -28,7 +28,7 @@ impl<C> Task<C> for Selector<C> {
         &self.name
     }
 
-    fn tick(&mut self, ctx: &mut C) -> Result<crate::task::TaskStatus, crate::task::TaskError> {
+    fn tick(&mut self, ctx: &mut C) -> TaskResult {
         while self.idx < self.children.len() {
             let status = self.children[self.idx].tick(ctx)?;
             match status {

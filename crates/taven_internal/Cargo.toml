@@ -4,4 +4,4 @@ version = "0.1.1"
 edition = "2024"
 
 [dependencies]
-taven_core ={ path = "../taven_core", version = "0.1.0"}
+taven_core ={ path = "../taven_core", version = "0.1.1"}

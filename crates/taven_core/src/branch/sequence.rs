@@ -1,4 +1,4 @@
-use crate::task::{BoxTask, Task, TaskError, TaskStatus};
+use crate::task::{BoxTask, Task, TaskResult, TaskStatus};
 
 /// Sequence: 子节点依次执行，遇到 Failure -> Failure，
 /// 遇到 Running -> Running（保持当前 idx），全部 Success -> Success
@@ -27,7 +27,7 @@ impl<C> Task<C> for Sequence<C> {
         &self.name
     }
 
-    fn tick(&mut self, ctx: &mut C) -> Result<TaskStatus, TaskError> {
+    fn tick(&mut self, ctx: &mut C) -> TaskResult {
         while self.idx < self.children.len() {
             let status = self.children[self.idx].tick(ctx)?;
             match status {

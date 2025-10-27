@@ -4,7 +4,7 @@ version = "0.1.1"
 edition = "2024"
 
 [dependencies]
-taven_internal ={ path = "crates/taven_internal", version = "0.1.0"}
+taven_internal ={ path = "crates/taven_internal", version = "0.1.1"}
 
 [dev-dependencies]
 
